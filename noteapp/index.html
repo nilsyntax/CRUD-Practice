@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>noteapp</title>
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: "Space Mono", monospace;
+      ;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="flex flex-row">
+    <div id="left-panel" class="flex-1 p-3 bg-[#151B22] text-gray-300">
+      <div class="border-b border-b-gray-700 pb-2">
+        <h1 class="text-2xl cursor-pointer">just<span class="text-[#008080]">note</span></h1>
+        <!-- Search field -->
+        <input type="search" name="search" id="search" placeholder="Search by tag or title"
+          class="outline-none bg-[#1B232B] rounded-sm px-2 py-0.5 mt-1 w-full text-xs">
+        <!-- Search field -->
+      </div>
+      <div id="note-ref-section" class="mt-3">
+        <!-- A Note component -->
+        <div class="note-ref-item border-l-4 border-l-[#008080] px-1 py-1 bg-[#1C242E]/50 cursor-pointer">
+          <h1 class="text-[1rem]">This is the End</h1>
+          <div class="note-ref-info flex justify-between text-[0.6rem] text-[#535b70] mb-0.5 uppercase">
+            <div class="flex gap-2">
+              <span class="inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-hash" aria-hidden="true">
+                  <line x1="4" x2="20" y1="9" y2="9"></line>
+                  <line x1="4" x2="20" y1="15" y2="15"></line>
+                  <line x1="10" x2="8" y1="3" y2="21"></line>
+                  <line x1="16" x2="14" y1="3" y2="21"></line>
+                </svg>
+                Study</span>
+              <span class="inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-hash" aria-hidden="true">
+                  <line x1="4" x2="20" y1="9" y2="9"></line>
+                  <line x1="4" x2="20" y1="15" y2="15"></line>
+                  <line x1="10" x2="8" y1="3" y2="21"></line>
+                  <line x1="16" x2="14" y1="3" y2="21"></line>
+                </svg>
+                Dev</span>
+              <span class="inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-hash" aria-hidden="true">
+                  <line x1="4" x2="20" y1="9" y2="9"></line>
+                  <line x1="4" x2="20" y1="15" y2="15"></line>
+                  <line x1="10" x2="8" y1="3" y2="21"></line>
+                  <line x1="16" x2="14" y1="3" y2="21"></line>
+                </svg>
+                JavaScript</span>
+            </div>
+            <div class="">30 January</div>
+          </div>
+        </div>
+        <!-- A note component -->
+      </div>
+    </div>
+    <div id="right-panel" class="flex-4">
+      <div id="panel">
+        <div class="tab-section"></div>
+        <div class="panale-button">
+          <div id="create-note"></div>
+        </div>
+      </div>
+      <h1 class="text-9xl">Hello <br> World</h1>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
