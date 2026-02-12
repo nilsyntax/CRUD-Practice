@@ -2,6 +2,10 @@ src/
 │
 ├── main.js                # Entry point
 │
+├── models/
+│   └── noteModel.js     
+│   └── tab.model.js     
+│
 ├── core/                  # Core app logic (no DOM here)
 │   ├── store.js           # Global state management
 │   ├── notes.js           # Note CRUD logic
