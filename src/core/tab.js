@@ -9,8 +9,8 @@ export function tabModel(noteId) {
    }
 }
 
-export function createNewTab(store, newNoteId) {
 
+export function createNewTab(store, newNoteId) {
    let newTab = tabModel(newNoteId)
 
    store.setState(state => {
@@ -35,7 +35,9 @@ export function openNote(store, noteId) {
    })
 }
 
-export function selectTab(){
-   
+export function selectTab(store, tabId){
+   store.setState(state => {
+      state.activeTabId = tabId
+   })
 }
 // console.log(tabModel("3242nfwnerkj345r0"))

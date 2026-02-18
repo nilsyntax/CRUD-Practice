@@ -12,12 +12,12 @@ export class Store {
       this.listners = []
 
       const savedNote = load()
-      if(savedNote){ this.state = savedNote }
+      if(savedNote){ this.state = savedNote }      // if savedNote isn't null, update this.state by storage data
    }
 
    // An update function
-   setState(updater){  // param = an any funciton that responsible to update data
-      updater(this.state)
+   setState(updater){                              // pass funciton responsible to update state data will pass by here
+      updater(this.state)                          // This is execute in IIFE
       this.notify()
       this._save()
    }
@@ -35,37 +35,3 @@ export class Store {
       save(this.state)
    }
 }
-
-
-
-
-// import { saveNotes, loadNotes } from "../services/storage.js"
-// import { noteModel } from "../models/note.model.js"
-
-// export class Store {
-//    constructor() {
-//       this.notes = loadNotes()
-//       this.listeners = []
-//    }
-
-//    saveNotes() {
-//       saveNotes(this.notes)
-//    }
-
-   // createNote(title, content) {
-   //    const newNote = noteModel(title, content)
-   //    this.notes.unshift(newNote)
-   //    this.saveNotes()
-   //    console.log(this.notes)
-   // }
-
-   // updateNote(id, updates) {
-   //    this.notes = this.notes.map(note => {
-   //       note.id === id ? { ...note, ...updates } : note
-   //    });
-   // }
-
-   // deleteNote(id) {
-   //    this.notes = this.notes.filter(note => note.id !== id)
-   // }
-// }

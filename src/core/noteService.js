@@ -5,12 +5,14 @@ export class Service{
       this.store = store
    }
 
-   createNote(noteModel){
-      const newNote = noteModel
+   createNote(){
+      const newNote = noteModel()
       this.store.setState(state => {
          state.notes.push(newNote)
-         state.activeNoteId = newNote.id
+         // state.activeNoteId = newNote.id
       })
+
+      return newNote.id
    }
 
    updateNote(id, changes){

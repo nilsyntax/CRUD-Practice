@@ -1,6 +1,18 @@
+import { Store } from "./core/store";
 import { Service } from "./core/noteService";
+import { appLayout } from "./ui/layout";
 
-const noteService = new Service
+const store = new Store();
+// store._save()
 
-console.log("This note:", noteService.createNote());
+const services = new Service(store)
 
+
+
+document.addEventListener("DOMContentLoaded", () => {
+   
+   const appRoot = document.getElementById('app')
+   appLayout(appRoot)
+   
+})
+// console.log(appRoot);
