@@ -4,13 +4,13 @@ export function tabModel(noteId) {
 
    return {
       id: crypto.randomUUID(),
-      noteIds: [noteId],
-      activeNoteIndex: 0
+      history: [noteId],
+      historyIndex: 0
    }
 }
 
 
-export function createNewTab(store, newNoteId) {
+export function openNewTab(store, newNoteId) {
    let newTab = tabModel(newNoteId)
 
    store.setState(state => {
@@ -19,19 +19,22 @@ export function createNewTab(store, newNoteId) {
    })
 }
 
-export function openNote(store, noteId) {
+export function openInTab(store, noteId) {
    store.setState(state => {
       const activeTab = state.tabs.find(tab => tab.id === state.activeTabId)
       
-      const {noteIds, activeNoteIndex } = activeTab
-      if(noteIds[activeNoteIndex] === noteId) {
-         return
+      if(!activeTab) return
+
+      const {history, historyIndex } = activeTab
+
+      if(activeTab.history[activeTab.historyIndex] === noteId)  return
+
+      if(historyIndex < history.length - 1){
+         activeTab.history = history.slice(0, historyIndex + 1)
       }
-      if(activeNoteIndex < noteIds.length - 1){
-         activeTab.noteIds = noteId.slice(0, activeNoteIndex + 1)
-      }
-      activeTab.noteIds.push(noteId)
-      activeTab.activeNoteIndex++
+
+      activeTab.history.push(noteId)
+      activeTab.historyIndex++
    })
 }
 
@@ -39,5 +42,34 @@ export function selectTab(store, tabId){
    store.setState(state => {
       state.activeTabId = tabId
    })
+}
+
+export function closeTab(store, tabId){
+   store.setState(state => {
+      state.tabs = state.tabs.filter(t => t.id !== tabId)
+   })
+}
+
+
+export function goBack(store) {
+  store.setState(state => {
+    const activeTab = state.tabs.find(tab => tab.id === state.activeTabId);
+    if (!activeTab) return;
+
+    if (activeTab.historyIndex > 0) {
+      activeTab.historyIndex--;
+    }
+  });
+}
+
+export function goForward(store) {
+  store.setState(state => {
+    const activeTab = state.tabs.find(tab => tab.id === state.activeTabId);
+    if (!activeTab) return;
+
+    if (activeTab.historyIndex < activeTab.history.length - 1) {
+      activeTab.historyIndex++;
+    }
+  });
 }
 // console.log(tabModel("3242nfwnerkj345r0"))
