@@ -1,9 +1,13 @@
 import { Store } from "./core/store";
 import { Service } from "./core/noteService";
+
+// ui import
 import { appLayout } from "./ui/layout";
 
+
+
 const store = new Store();
-// store._save()
+
 
 const services = new Service(store)
 
@@ -15,4 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
    appLayout(appRoot)
    
 })
+
+
+
 // console.log(appRoot);

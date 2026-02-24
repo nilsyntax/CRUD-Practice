@@ -16,6 +16,7 @@ export function openNewTab(store, newNoteId) {
    store.setState(state => {
       state.tabs.push(newTab)
       state.activeTabId = newTab.id
+      state.activeNoteId = newTab.history[historyIndex]
    })
 }
 
@@ -35,6 +36,7 @@ export function openInTab(store, noteId) {
 
       activeTab.history.push(noteId)
       activeTab.historyIndex++
+      state.activeNoteId = newTab.history[historyIndex]
    })
 }
 

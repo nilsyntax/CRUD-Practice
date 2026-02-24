@@ -9,10 +9,10 @@ export class Service{
       const newNote = noteModel()
       this.store.setState(state => {
          state.notes.push(newNote)
-         // state.activeNoteId = newNote.id
+         state.activeNoteId = newNote.id
       })
 
-      return newNote.id
+      return newNote.id       // returned new note id should pass to create new tab
    }
 
    updateNote(id, changes){
