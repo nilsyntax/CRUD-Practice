@@ -114,8 +114,8 @@
 //    `
 // }
 
-import { aside } from "./staticLayout/aside";
-import { workspace } from "./staticLayout/workspace";
+import { aside } from "./aside";
+import { workspace } from "./workspace";
 
 
 export function appLayout (root){
