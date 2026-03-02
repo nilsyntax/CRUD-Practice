@@ -15,7 +15,7 @@ export function tabNavigation() {
          </span>
       </div>
 
-      <div id="tab-space" class="flex flex-1 min-w-0 h-full"></div>
+      <div id="tab-space" class="flex flex-1 min-w-0 h-full gap-0.5"></div>
    </div>
    `
 }
