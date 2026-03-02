@@ -19,7 +19,7 @@ export class Tab {
    }
 
    openInTab(noteId) {
-      
+
       this.store.setState(state => {
 
          const activeTab = state.tabs.find(tab => tab.id === state.activeTabId)
@@ -38,6 +38,47 @@ export class Tab {
       })
    }
 
+
+
+   closeTab(tabId) {
+      this.store.setState(state => {
+
+         // find the index from the tabId
+         const index = state.tabs.findIndex(ti => ti.id === tabId)
+         if (index === -1) return
+
+         // check if tab is active or not store into isActive
+         const isActive = state.activeTabId === tabId
+
+         // filter out the tab from state
+         state.tabs = state.tabs.filter(t => t.id !== tabId)
+
+         // check if isActive true or false -> false stop // true next step
+         if (!isActive) return
+
+         // last tab closed? set activeTabId to null
+         if (state.tabs.length === 0) {
+            state.activeTabId = null
+            return
+         }
+
+         if (index === state.tabs.length) {
+            // if the closed tab is the last index - set previous tab as active
+            const preTabId = state.tabs[state.tabs.length - 1]
+            console.log(preTabId);
+
+            state.activeTabId = preTabId.id
+            state.activeNoteId = preTabId.history[preTabId.historyIndex]
+         }
+         else {
+            // if the closed tab is middle somether - set the next tab as active
+            state.activeTabId = state.tabs[index].id
+            state.activeNoteId = state.tab[index].history[state.tabs[index].historyIndex]
+         }
+      })
+   }
+
+   // -----------------------------
    selectTab(tabId, noteId) {
       this.store.setState(state => {
          state.activeTabId = tabId
@@ -46,11 +87,6 @@ export class Tab {
       })
    }
 
-   closeTab(tabId) {
-      this.store.setState(state => {
-         state.tabs = state.tabs.filter(t => t.id !== tabId)
-      })
-   }
 
    goBack() {
       this.store.setState(state => {
